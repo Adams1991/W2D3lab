@@ -29,7 +29,7 @@ def initialize(name, wallet, age)
 
   def buy_drink(pub, drink)
     return if check_age == false
-    return if drunk_level >= 100
+    return "Not service" if drunk_level >= 100
     pub.remove_drink(drink)
     pub.add_money_to_till(drink.get_price())
     pay_money(drink.get_price())
