@@ -8,8 +8,9 @@ require("minitest/rg")
 class CustomerTest < MiniTest::Test
 
   def setup
-    @customer1 = Customer.new("Shaun", 30)
-    @customer2 = Customer.new("Jesus", 50)
+    @customer1 = Customer.new("Shaun", 30, 26)
+    @customer2 = Customer.new("Jesus", 50, 29)
+    @customer3 = Customer.new("Bob", 5, 6)
 
     @pub = Pub.new("Queens Arms", 500)
 
@@ -29,11 +30,19 @@ class CustomerTest < MiniTest::Test
     assert_equal(47.00, @customer2.count_money_wallet())
   end
 
+  def test_check_age__pass
+    assert_equal(true, @customer1.check_age())
+  end
+
+  def test_check_age__not_pass
+    assert_equal(false, @customer3.check_age())
+  end
+
   def test_buy_drink()
-    @customer2.buy_drink(@pub, @drink2)
+    @customer1.buy_drink(@pub, @drink2)
     assert_equal(1, @pub.count_drinks)
     assert_equal(503.00, @pub.count_till)
-    assert_equal(47.00, @customer2.count_money_wallet())
+    assert_equal(47.00, @customer1.count_money_wallet())
   end
 
 end
