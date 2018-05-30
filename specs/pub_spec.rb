@@ -28,4 +28,13 @@ class PubTest < MiniTest::Test
     assert_equal(0, @pub.count_drinks())
   end
 
+  def test_count_till
+    assert_equal(500, @pub.count_till())
+  end
+
+  def test_add_money_to_till
+    @pub.add_money_to_till(9.90)
+    assert_equal(509.90, @pub.count_till())
+  end
+
 end

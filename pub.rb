@@ -20,4 +20,12 @@ attr_writer(:name, :till, :drinks)
     @drinks.delete(drink)
   end
 
+  def count_till
+    @till
+  end
+
+  def add_money_to_till(amount)
+    @till += amount    
+  end
+
 end

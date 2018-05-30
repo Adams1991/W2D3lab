@@ -8,4 +8,8 @@ class Drink
 
   end
 
+  def get_price
+    @price
+  end
+
 end

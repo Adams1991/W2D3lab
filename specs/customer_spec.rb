@@ -1,0 +1,39 @@
+require("minitest/autorun")
+require_relative("../customer.rb")
+require_relative("../pub.rb")
+require_relative("../drink.rb")
+require("minitest/rg")
+
+
+class CustomerTest < MiniTest::Test
+
+  def setup
+    @customer1 = Customer.new("Shaun", 30)
+    @customer2 = Customer.new("Jesus", 50)
+
+    @pub = Pub.new("Queens Arms", 500)
+
+    @drink1 = Drink.new("Shot Vodka", 4.95)
+    @drink2 = Drink.new("Shot Tequila", 3.00)
+
+    @pub.add_drink(@drink1)
+    @pub.add_drink(@drink2)
+  end
+
+  def test_count_money_wallet
+    assert_equal(30, @customer1.count_money_wallet())
+  end
+
+  def test_pay_money
+    @customer2.pay_money(@drink2.get_price())
+    assert_equal(47.00, @customer2.count_money_wallet())
+  end
+
+  def test_buy_drink()
+    @customer2.buy_drink(@pub, @drink2)
+    assert_equal(1, @pub.count_drinks)
+    assert_equal(503.00, @pub.count_till)
+    assert_equal(47.00, @customer2.count_money_wallet())
+  end
+
+end
