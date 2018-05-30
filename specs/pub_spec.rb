@@ -7,8 +7,8 @@ require("minitest/rg")
 class PubTest < MiniTest::Test
 
   def setup
-    @drink1 = Drink.new("Shot Vodka", 4.95)
-    @drink2 = Drink.new("Shot Tequila", 3.00)
+    @drink1 = Drink.new("Shot Vodka", 4.95, 38)
+    @drink2 = Drink.new("Shot Tequila", 3.00, 36)
 
     @pub = Pub.new("Queens Arms", 500)
   end
