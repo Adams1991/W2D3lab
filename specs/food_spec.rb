@@ -12,4 +12,8 @@ class FoodTest < MiniTest::Test
     assert_equal(-10, @food.recovery())
   end
 
+  def test_get_price
+    assert_equal(2.50, @food.price())
+  end
+
 end

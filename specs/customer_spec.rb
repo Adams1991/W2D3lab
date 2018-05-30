@@ -18,8 +18,12 @@ class CustomerTest < MiniTest::Test
     @drink1 = Drink.new("Shot Vodka", 4.95, 38)
     @drink2 = Drink.new("Shot Tequila", 3.00, 36)
 
+    @food1 = Food.new("Fried Marsbar", 2.50, -10)
+
     @pub.add_drink(@drink1)
     @pub.add_drink(@drink2)
+
+    @pub.add_food(@food1)
   end
 
   def test_count_money_wallet
@@ -50,6 +54,15 @@ class CustomerTest < MiniTest::Test
     assert_equal(1, @pub.count_drinks)
     assert_equal(503.00, @pub.count_till)
     assert_equal(47.00, @customer2.count_money_wallet())
+  end
+
+  def test_buy_food()
+    @customer2.drunk_level = 80
+    @customer2.buy_food(@pub, @food1)
+    assert_equal(0, @pub.count_food)
+    assert_equal(502.50, @pub.count_till)
+    assert_equal(47.50, @customer2.count_money_wallet())
+    assert_equal(90, @customer2.drunk_level())
   end
 
 

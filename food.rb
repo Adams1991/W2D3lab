@@ -1,6 +1,6 @@
 class Food
 
-  attr_reader(:recovery)
+  attr_reader(:recovery, :price)
 
   def initialize(name, price, recovery)
     @name = name

@@ -1,11 +1,12 @@
 class Pub
 
-attr_writer(:name, :till, :drinks)
+attr_writer(:till, :drinks, :food)
 
   def initialize(name, till)
     @name = name
     @till = till
     @drinks = []
+    @food = []
   end
 
   def count_drinks
@@ -20,12 +21,24 @@ attr_writer(:name, :till, :drinks)
     @drinks.delete(drink)
   end
 
+  def count_food
+    return @food.count()
+  end
+
+  def add_food(food)
+    @food.push(food)
+  end
+
+  def remove_food(food)
+    @food.delete(food)
+  end
+
   def count_till
     @till
   end
 
   def add_money_to_till(amount)
-    @till += amount    
+    @till += amount
   end
 
 end
